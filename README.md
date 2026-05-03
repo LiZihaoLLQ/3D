@@ -31,3 +31,16 @@ python3 -m http.server 8000
    - 初始底板：启用 `raw_baseplate();`
    - 优化底板：启用 `optimized_baseplate();`
 4. 按项目需求修改尺寸、筋高、孔位和工况权重。
+
+
+### 单独输出优化后的底板
+
+已提供独立文件 `optimized_baseplate_only.scad`，可直接用于导出优化后的底板模型。
+
+示例（导出 STL）：
+
+```bash
+openscad -o optimized_baseplate.stl optimized_baseplate_only.scad
+```
+
+如需导出 STEP，可在 FreeCAD/其他 CAD 软件中导入 STL 或在 OpenSCAD 生成中间格式后转换。
