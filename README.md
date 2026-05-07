@@ -12,3 +12,35 @@ python3 -m http.server 8000
 ```
 
 3. 浏览器访问 `http://localhost:8000/index.html`。
+
+
+## 电池包底板独立建模与拓扑优化
+
+仓库新增了可直接修改的参数化模型与分析说明：
+
+- `battery_baseplate.scad`：
+  - `raw_baseplate()`：底板初始方案（独立建模）。
+  - `optimized_baseplate()`：按多工况拓扑优化结果重建的工程可制造方案。
+- `topo_optimization_plan.md`：多工况受力、拓扑优化参数、重建原则。
+
+### 快速使用
+
+1. 安装 OpenSCAD。
+2. 打开 `battery_baseplate.scad`。
+3. 通过注释切换展示：
+   - 初始底板：启用 `raw_baseplate();`
+   - 优化底板：启用 `optimized_baseplate();`
+4. 按项目需求修改尺寸、筋高、孔位和工况权重。
+
+
+### 单独输出优化后的底板
+
+已提供独立文件 `optimized_baseplate_only.scad`，可直接用于导出优化后的底板模型。
+
+示例（导出 STL）：
+
+```bash
+openscad -o optimized_baseplate.stl optimized_baseplate_only.scad
+```
+
+如需导出 STEP，可在 FreeCAD/其他 CAD 软件中导入 STL 或在 OpenSCAD 生成中间格式后转换。
